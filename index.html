@@ -23,7 +23,7 @@
 		<div class="slides">
 			<section>
 				<h1>Словари</h1>
-				<img alt="https://ktkv-presentations.github.io/algos-10" data-type="qrcode">
+				<img alt="https://ktkv-presentations.github.io/algos-10" class="r-stretch" data-type="qrcode">
 			</section>
 			<section>
 				<section>
@@ -44,6 +44,20 @@ print(my_motorbike["brand"])
 				</section>
 				<section>
 					<div class="border-r">
+						<h1>Ключи не являются атрибутами</h1>
+					</div>
+					<pre><code class="python">
+my_motorbike = {
+	"brand": "Ducati",
+	"price": 25000,
+	"engine_vol": 1.2
+}
+
+print(my_motorbike.price) # AttributeError
+</code></pre>
+				</section>
+				<section>
+					<div class="border-r">
 						<h1>Ключи уникальны</h1>
 					</div>
 					<pre><code class="python">
@@ -57,9 +71,9 @@ my_motorbike = {
 print(my_motorbike[engine_vol]) # 1.5
 </code></pre>
 				</section>
-<section>
+				<section>
 					<div class="border-y">
-						<h1>Порядок не важен</h1>
+						<h1>Порядок ключей не важен</h1>
 					</div>
 					<pre><code class="python">
 my_motorbike = {
@@ -77,11 +91,243 @@ my_motorbike1 = {
 print(my_motorbike == my_motorbike1) # True
 </code></pre>
 				</section>
+				<section>
+					<div class="border-b">
+						<h1>Может хранить в себе все типы данных</h1>
+					</div>
+					<pre><code class="python">
+complex_dict = {
+    "name": "Alice", # str
+    "age": 30, # int
+    "skills": ["Python", "SQL", "Machine Learning"], # list
+    "is_student": False, # bool
+    "address": {"city": "New York", "zip": "10001"} # dict
+}
+complex_dict["address"]["city"] # New York
+					</code></pre>
+				</section>
 			</section>
 			<section>
 				<section>
+					<h1>Создание словаря</h1>
+					<h4>Пустой словарь</h4>
+					<pre><code class="python">
+empty_dict = {}
+empty_dict = dict()
+</code></pre>
+					<h4>Словарь с элементами</h4>
+					<pre><code class="python">
+person = {
+    "name": "Alice",
+    "age": 30,
+    "city": "New York"
+}
 
+student = dict(name="John", age=22, major="Math")
+</code></pre>
 				</section>
+				<section>
+					<h1>Изменение и добавление значений</h1>
+					<p>Указываем ключ и присваиваем ему новое значение</p>
+					<pre><code class="python">
+my_motorbike = {
+	"brand": "Ducati",
+	"price": 25000,
+	"engine_vol": 1.2
+}
+my_motorbike["brand"] = "Honda"
+print(my_motorbike["brand"]) # Honda
+
+my_motorbike["country"] = "Japan"
+print(my_motorbike["country"]) # Japan
+</code></pre>
+				</section>
+				<section>
+					<h1>
+						Вывод всего словаря на экран
+					</h1>
+					<code class="python">print(my_dict)</code>
+					<pre><code class="python">
+my_dict = {"name": "Alice", "age": 30, "city": "New York"}
+print(my_dict)
+# {'name': 'Alice', 'age': 30, 'city': 'New York'}
+</code></pre>
+				</section>
+				<section>
+					<h1>Вывод всех ключей</h1>
+					<code class="python">print(my_dict.keys())</code>
+					<pre><code class="python">
+my_dict = {"name": "Alice", "age": 30, "city": "New York"}
+print(my_dict.keys())
+# dict_keys(['name', 'age', 'city'])
+print(list(my_dict.keys()))
+# ['name', 'age', 'city']
+</code></pre>
+				</section>
+				<section>
+					<h1>Вывод всех значений</h1>
+					<code class="python">print(my_dict.values())</code>
+					<pre><code class="python">
+my_dict = {"name": "Alice", "age": 30, "city": "New York"}
+print(my_dict.values())
+# dict_values(['Alice', 30, 'New York'])
+print(list(my_dict.values()))
+# ['Alice', 30, 'New York']
+</code></pre>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h1>Итерация по словарю</h1>
+					<code class="python">my_dict.items()</code>
+					<pre><code class="python">
+for key, value in my_dict.items():
+    print(f"Ключ: {key}, Значение: {value}")
+
+# Ключ: name, Значение: Alice
+# Ключ: age, Значение: 30
+# Ключ: city, Значение: New York
+					</code></pre>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h1>JSON</h1>
+					<h4>JavaScript Object Notation</h4>
+					<div class="border-b">JSON - индустриальный стандарт для хранения данных</div>
+					<div class="border-r">JSON в ЯП представляется как строка</div>
+					<p>структуры данных, заключенные в фигурные скобки {}, где каждый элемент представлен в формате "ключ:
+						значение"</p>
+					<pre><code class="json">
+{
+    "name": "John",
+    "age": 25,
+    "married": false,
+    "children": ["Anna", "Tom"],
+    "address": {
+        "city": "New York",
+        "zip_code": "10001"
+    }
+}
+				</code></pre>
+				</section>
+				<section>
+					<h1>JSON используется</h1>
+					<div class="grid grid-cols-1 gap-4">
+						<div class="border-b">
+							<h4>Веб-разработка</h4>
+							<p>
+								JSON часто используется для передачи данных между сервером и клиентом, особенно в AJAX-запросах и API
+							</p>
+						</div>
+						<div class="border-b">
+							<h4>Конфигураций</h4>
+							<p>JSON используется для хранения настроек в файлах конфигурации в различных приложениях</p>
+						</div>
+						<div class="border-b">
+							<h4>Передача данных в API</h4>
+							<p>JSON является стандартным форматом для большинства веб-сервисов и API</p>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h1>JSON в PYTHON</h1>
+					<p>Для работы с <code>json</code> необходимо использовать встроенную библиотеку json</p>
+					<code class="python">import json</code>
+					<p><code class="python">json.dumps(data)</code> превращает словарь в строку json</p>
+					<p><code class="python">json.loads(json)</code> превращает строку json в словарь</p>
+				</section>
+				<section>
+					<pre class="r-stretch"><code class="python">
+import json
+
+# Преобразование Python словаря в JSON строку
+data = {
+    "name": "John",
+    "age": 30,
+    "city": "New York"
+}
+json_string = json.dumps(data)
+print(json_string)
+
+# Преобразование JSON строки обратно в Python словарь
+data_from_json = json.loads(json_string)
+print(data_from_json)
+					</code></pre>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h1>Методы словарей</h1>
+					<h4>Безопасное получение значения</h4>
+					<code class="python">my_dict.get(название_ключа, значение_если_отсутствует)</code>
+					<pre><code class="python">
+my_dict = {"name": "Alice", "age": 30}
+print(my_dict["city"]) # KeyError
+print(my_dict.get("name"))  # Вывод: Alice
+print(my_dict.get("city", "Unknown"))  # Вывод: Unknown
+					</code></pre>
+				</section>
+				<section>
+					<h1>Методы словарей</h1>
+					<h4>Добавление в словарь новой пары "ключ-значение"</h4>
+					<code class="python">my_dict.update(словарь)</code>
+					<pre><code class="python">
+my_dict = {"name": "Alice"}
+my_dict.update({"city": "New York", "age": 31})
+print(my_dict) # {"name": "Alice", "city": "New York", "age": 31}
+					</code></pre>
+				</section>
+				<section>
+					<h1>Методы словарей</h1>
+					<h4>Удалить ключ и вернуть значение</h4>
+					<code class="python">my_dict.pop(название_ключа, значение_если_отсутствует)</code>
+					<pre><code class="python">
+my_dict = {"name": "Alice", "age": 30}
+age = my_dict.pop("age", "Not Found")
+print(age)  # Вывод: 30
+print(my_dict)  # Вывод: {'name': 'Alice'}
+					</code></pre>
+				</section>
+				<section>
+					<h1>Методы словарей</h1>
+					<h4>Удалить последний добавленный ключ и вернуть значение</h4>
+					<code class="python">my_dict.popitem()</code>
+					<pre><code class="python">
+my_dict = {"name": "Alice", "age": 30}
+my_dict["city"] = "New York"
+my_dict.popitem() # ("city": "New York")
+					</code></pre>
+				</section>
+				<section>
+					<h1>Методы словарей</h1>
+					<h4>Удалить все элементы со словаря</h4>
+					<code class="python">my_dict.clear()</code>
+					<pre><code class="python">
+my_dict = {"name": "Alice", "age": 30}
+my_dict.clear()
+print(my_dict)  # {}
+					</code></pre>
+				</section>
+<section>
+					<h1>Методы словарей</h1>
+					<h4>Создание поверхностной копии словаря</h4>
+					<code class="python">my_dict.copy()</code>
+					<pre><code class="python">
+my_dict = {"name": "Alice", "age": 30}
+new_dict = my_dict.copy()
+new_dict["name"] = "Sam"
+print(my_dict) # {"name": "Alice", "age": 30}
+print(new_dict) # {"name": "Sam", "age": 30}
+					</code></pre>
+				</section>
+			</section>
+			<section>
+				<h1>Проверка наличия ключа в словаре</h1>
+<pre><code class="python">
+if "name" in my_dict:
+    print("Ключ 'name' существует в словаре")
+					</code></pre>
 			</section>
 		</div>
 	</div>
